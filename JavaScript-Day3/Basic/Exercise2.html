@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise2</title>
+    <script src="Exercise2.js"></script>
+    <style>
+      /* CSS styles for the temperature container */
+      .temperature-container {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      /* CSS styles for the temperature and weather condition */
+      .temperature {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .weather-condition {
+        font-size: 18px;
+      }
+
+      /* CSS styles for the weather condition images */
+      .weather-image {
+        width: 500px;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="temperature-container">
+      <div class="temperature" id="temperature"></div>
+      <div class="weather-condition" id="weather-condition"></div>
+      <img
+        class="weather-image"
+        id="weather-image"
+        src=""
+        alt="Weather Image"
+      />
+    </div>
+
+    <script>
+      // JavaScript code for temperature calculation and display
+      function calculateTemperature() {
+        // Generate a random temperature between -5c and 40c
+        let temperature = Math.floor(Math.random() * 46) - 5;
+        let temperatureElement = document.getElementById("temperature");
+        let weatherConditionElement =
+          document.getElementById("weather-condition");
+        let weatherImageElement = document.getElementById("weather-image");
+
+        // Display the temperature
+        temperatureElement.textContent = "Temperature: " + temperature + "°C";
+
+        // Determine the weather condition and display appropriate message and image
+        if (temperature < 0) {
+          weatherConditionElement.textContent = "The weather is freezing";
+          weatherImageElement.src = "images/snow-image.jpg";
+        } else if (temperature >= 0 && temperature < 10) {
+          weatherConditionElement.textContent = "The weather is cold";
+          weatherImageElement.src = "images/cold-image.jpg";
+        } else if (temperature >= 10 && temperature < 25) {
+          weatherConditionElement.textContent = "The weather is moderate";
+          weatherImageElement.src = "images/moderate-image.jpg";
+        } else if (temperature >= 25 && temperature < 32) {
+          weatherConditionElement.textContent = "The weather is warm";
+          weatherImageElement.src = "images/warm-image.jpg";
+        } else {
+          weatherConditionElement.textContent = "The weather is hot";
+          weatherImageElement.src = "images/hot-image.jpg";
+        }
+      }
+
+      // Call the calculateTemperature function to display the temperature and weather condition
+      calculateTemperature();
+    </script>
+  </body>
+</html>
